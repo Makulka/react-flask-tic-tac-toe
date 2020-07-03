@@ -1,23 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
 import './App.css';
 import GameView from './views/GameView/GameView';
 import Navigation from './components/Navigation/Navigation';
 
-function App() {
-  // const [currentTime, setCurrentTime] = useState(0);
+import * as components from './testComponents';
 
-  // useEffect(() => {
-  //   fetch('/time').then(res => res.json()).then(data => {
-  //     setCurrentTime(data.time);
-  //   });
-  // }, []);
-
+const App = ({page}) => {
+  const Component = components[page]
   return (
-    <div className="App">
-      <Navigation />
-      <GameView />
-    </div>
+    // <div className="App">
+    //   <Navigation />
+    //   <GameView />
+    // </div>
+    <Component />
   );
 }
 
-export default App;
+const mapStateToProps = ({page}) => ({page})
+export default connect(mapStateToProps)(App);

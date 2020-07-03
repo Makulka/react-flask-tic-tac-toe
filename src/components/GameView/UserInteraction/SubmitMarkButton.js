@@ -2,8 +2,7 @@ import React from 'react';
 
 const SubmitMarkButton = (props) => {
     const {submitMarkPosition,       
-        isGameOver,
-        board
+        isGameOver        
     } = props;
     
     return(
