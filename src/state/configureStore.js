@@ -1,19 +1,15 @@
-import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
-import { connectRoutes } from 'redux-first-router'
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { connectRoutes } from 'redux-first-router';
 
-import page from './reducers/pageReducer';
+import {routeToPath} from './routes';
 
-const routesMap = {
-  HOME: '/',
-  USER: '/user/:id'
-}
 
 export default function configureStore(preloadedState) {
-  const { reducer, middleware, enhancer } = connectRoutes(routesMap)
+  const { reducer: location, middleware: routerMiddleware, enhancer: routerEnhancer } = connectRoutes(routeToPath)
     
-  const rootReducer = combineReducers({ page, location: reducer })
-  const middlewares = applyMiddleware(middleware)
-  const enhancers = compose(enhancer, middlewares)  
+  const rootReducer = combineReducers({location})
+  const middlewares = applyMiddleware(routerMiddleware)
+  const enhancers = compose(routerEnhancer, middlewares)  
 
   const store = createStore(rootReducer, preloadedState, enhancers)
 
@@ -21,7 +17,7 @@ export default function configureStore(preloadedState) {
 }
 
 /**
- * connectRoutes(routesMap) returns an object
+ * connectRoutes(routeToPath) returns an object
  *  with {reducer: f, middleware: f, enhancer: f, initialDispatch: f, thunk: f, history: }
  *  history: e.g. {go: f, goBack: f, goForward: f, length: 1, listen: f, location: {pathname: "/", search: "", hash: "", state: undefined}, push: f, replace: f}
 */

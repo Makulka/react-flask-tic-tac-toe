@@ -6,11 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import configureStore from './state/configureStore';
 
-import {createStore} from 'redux';
-import pageReducer from './state/reducers/pageReducer';
-
 const store = configureStore();
-//const store=createStore(pageReducer)
 
 ReactDOM.render(
   <Provider store={store}>
