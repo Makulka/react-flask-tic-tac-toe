@@ -13,18 +13,14 @@
         display: flex ;
         margin: 0;
         padding: 0;        
-        li {
-            list-style: none;
-            padding: 0;
-            font-family: roboto;
-            .Active {
-                background-color: #CCCCCC;
-            }
-            a {
-                text-decoration: none;
-                padding: 21.5px 7.5px 21.5px 7.5px;
-                color: white;
-            }
+        a {            
+            text-decoration: none;
+            padding: 21.5px 7.5px 21.5px 7.5px;
+            color: white;            
+            // font-family: roboto;
+            // .Active {
+            //     background-color: #CCCCCC;
+            // }            
         }
     }
 }
